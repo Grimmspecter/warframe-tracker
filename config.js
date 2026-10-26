@@ -1,12 +1,10 @@
-// Warframe Mastery Checklist: your Firebase settings.
-// Replace each PASTE_HERE with the values from:
-// Firebase console > Project settings (gear icon) > General > Your apps > Web app > "SDK setup and configuration" > Config
-// These values are meant to be public. Your data is protected by the Firestore rules, not by hiding this file.
+// Warframe Mastery Checklist: Firebase settings for the warframeultimatetracker project.
+// These values are meant to be public. Your data is protected by the Firestore rules.
 window.FIREBASE_CONFIG = {
-  apiKey: "PASTE_HERE",
-  authDomain: "PASTE_HERE",
-  projectId: "PASTE_HERE",
-  storageBucket: "PASTE_HERE",
-  messagingSenderId: "PASTE_HERE",
-  appId: "PASTE_HERE"
+  apiKey: "AIzaSyDij-SnxQRF2Apevha2scc-Py59fiRbOWA",
+  authDomain: "warframeultimatetracker.firebaseapp.com",
+  projectId: "warframeultimatetracker",
+  storageBucket: "warframeultimatetracker.firebasestorage.app",
+  messagingSenderId: "1041371620199",
+  appId: "1:1041371620199:web:48dcca731c11a5424e85c2"
 };
