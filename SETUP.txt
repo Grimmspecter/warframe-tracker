@@ -1,0 +1,90 @@
+Warframe Mastery Checklist - website setup
+==========================================
+
+This puts the tracker on its own web address. Friends sign in with their
+Google account; no Claude account needed. It's free and takes about 15 minutes.
+
+Files in this folder
+  index.html       the tracker
+  config.js        your Firebase settings go here (step 4)
+  firestore.rules  database rules to paste in (step 3)
+
+------------------------------------------------------------
+1. Create a Firebase project
+------------------------------------------------------------
+  - Go to https://console.firebase.google.com and sign in with Google.
+  - Click "Create a project" (or "Add project").
+  - Name it, for example: warframe-tracker
+  - Google Analytics is optional. You can turn it off.
+  - Click Create project, then Continue.
+
+------------------------------------------------------------
+2. Turn on Google sign-in
+------------------------------------------------------------
+  - In the left menu: Build > Authentication > Get started.
+  - Sign-in method tab > Google > Enable.
+  - Pick your email as the support email > Save.
+
+------------------------------------------------------------
+3. Create the database
+------------------------------------------------------------
+  - Left menu: Build > Firestore Database > Create database.
+  - Pick a location near you > Next.
+  - Choose "Start in production mode" > Create.
+  - Open the Rules tab. Delete what's there, paste everything from
+    firestore.rules, then click Publish.
+    (These rules let every signed-in player read everyone's profile, and
+    only change their own.)
+
+------------------------------------------------------------
+4. Get your settings into config.js
+------------------------------------------------------------
+  - Click the gear icon next to "Project Overview" > Project settings.
+  - Under "Your apps", click the web icon  </>
+  - Give it a nickname (anything) > Register app. Skip Firebase Hosting.
+  - You'll see a block like:
+        const firebaseConfig = {
+          apiKey: "AIza...",
+          authDomain: "warframe-tracker-xxxx.firebaseapp.com",
+          ...
+  - Open config.js in Notepad and replace each PASTE_HERE with the matching
+    value. Keep the quotes. Save.
+
+------------------------------------------------------------
+5. Put the site online (GitHub Pages)
+------------------------------------------------------------
+  - Go to https://github.com and sign up or sign in.
+  - Click "+" (top right) > New repository.
+    Name: warframe-tracker   Public   > Create repository.
+  - Click the "uploading an existing file" link.
+  - Drag in index.html and your edited config.js > Commit changes.
+  - Open the repository's Settings > Pages.
+    Source: Deploy from a branch. Branch: main, folder: / (root) > Save.
+  - After about a minute your site is at:
+        https://YOUR-GITHUB-NAME.github.io/warframe-tracker/
+
+------------------------------------------------------------
+6. Allow sign-in from your site
+------------------------------------------------------------
+  - Back in Firebase: Build > Authentication > Settings tab >
+    Authorized domains > Add domain.
+  - Enter: YOUR-GITHUB-NAME.github.io  > Add.
+
+------------------------------------------------------------
+7. Use it
+------------------------------------------------------------
+  - Open your site, click "Sign in with Google", and set up your profile.
+  - Send the address to your friends. They sign in with Google, set up a
+    profile, and show up on the Friends tab and the Leaderboard.
+
+Bring over your progress from the Claude version
+  - On the Claude page: Overview > Backup and restore > Copy backup.
+  - On your new site (signed in): Overview > paste it into the box > Restore.
+
+Notes
+  - The trader data (Baro Ki'Teer, Varzia, Darvo) loads by itself when the
+    page opens. If it ever can't, paste the world state on the Traders tab.
+  - Firebase's free plan is far more than a group of friends will use.
+  - To update the site later, upload a new index.html to the same
+    repository. Keep your config.js.
+  - If sign-in says "unauthorized domain", recheck step 6.
